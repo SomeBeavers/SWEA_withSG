@@ -19,7 +19,17 @@ namespace SourceGen
           {
             context.AddSource(
               "Pizza.cs",
-              "namespace TestNS{public class TestCls{public static string TestMethod(){System.Console.WriteLine(\"Generator\");}}}"
+              "namespace TestNS" +
+              "{" +
+              "public class TestCls" +
+              "{" +
+              "public static string TestMethod()" +
+              "{" +
+              "System.Console.WriteLine(\"Generator\");" +
+              "}" +
+              "#if NETCOREAPP3_1\r\npublic class CoreClass\r\n{\r\n    private int Test()\r\n    {\r\n    }\r\n}\r\n#endif"+
+              "}" +
+              "}"
             );
           }
           else if (warn != null)
